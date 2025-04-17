@@ -29,7 +29,7 @@ public class Hooks {
     static String city;
     static String zipcode;
 
-    ""
+
 
     @Before(order = 1, value = "@RegisterUser")
     public void registerUser() {
