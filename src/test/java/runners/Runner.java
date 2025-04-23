@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
                 "rerun:target/failedRerun.txt"},
         features = {"src/test/resources/features"},
         glue = {"stepDefinitions"},
-        tags = "@All or @RegisterUser",
+        tags = "@Al",
        // tags="@Test",
         dryRun = false
 )

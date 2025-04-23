@@ -277,6 +277,9 @@ public class ReusableMethods {
                 return dateF;
         }
     }
+    public static  WebElement randomSelected(List<WebElement> element){
+        return element.get(random.nextInt(element.size()));
+    }
 
     //Auto gun ay yil secim
     public static void selectDropDown(WebElement element){
