@@ -34,10 +34,15 @@ public class Hooks {
     @Before(order = 1, value = "@RegisterUser")
     public void registerUser() {
         Driver.getDriver().get(ConfigReader.getProperty("url"));
-        //jsScrollClick(rUP.signUpLoginButton);
+        fillAndCreateAccount();
+        rUP.continueButton.click();
+        Driver.closeDriver();
+
+    }
+
+    public void fillAndCreateAccount(){
         ReusableMethods.jsScroll(rUP.signUpLoginButton);
         rUP.signUpLoginButton.click();
-        System.out.println("before çalıştı");
 
         email = getFaker().internet().emailAddress();
         password =getFaker().internet().password();
@@ -75,10 +80,9 @@ public class Hooks {
         ReusableMethods.jsScroll(rUP.createAccountButton);
         rUP.createAccountButton.click();
         Assert.assertEquals(rUP.createAccoutVerifyText.getText(),"ACCOUNT CREATED!");
-        rUP.continueButton.click();
-        rUP.userNameVerifyText.isDisplayed();
 
-        Driver.closeDriver();
+       // rUP.userNameVerifyText.isDisplayed();
+
 
     }
 

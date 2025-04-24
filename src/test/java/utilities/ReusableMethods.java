@@ -208,6 +208,11 @@ public class ReusableMethods {
             executor.executeScript("arguments[0].click();", webElement);
         }
     }
+    public static void clickWithJS(WebElement element) {
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].scrollIntoView(true);", element);
+        ((JavascriptExecutor) Driver.getDriver()).executeScript("arguments[0].click();", element);
+    }
+
 
     public static void bulveTikla(WebElement webElement) {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));

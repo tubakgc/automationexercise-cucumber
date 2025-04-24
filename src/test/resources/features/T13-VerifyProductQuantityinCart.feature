@@ -1,4 +1,4 @@
-@Al
+@All
 Feature: Product Quantity Verification in Cart
 
   Scenario: Verify product quantity in cart
