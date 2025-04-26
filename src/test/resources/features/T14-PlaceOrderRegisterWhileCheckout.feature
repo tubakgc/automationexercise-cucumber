@@ -1,4 +1,4 @@
-@Al
+@All
 Feature: Complete E-commerce Purchase Flow
 
   Scenario: End-to-end purchase process with account creation
