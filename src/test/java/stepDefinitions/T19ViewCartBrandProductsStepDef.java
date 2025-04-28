@@ -13,6 +13,7 @@ public class T19ViewCartBrandProductsStepDef {
     @Then("I verify that Brands are visible on left side bar")
     public void ıVerifyThatBrandsAreVisibleOnLeftSideBar() {
         Assert.assertEquals(vCBP.brandsProductsVerify.getText(),"BRANDS");
+        Assert.assertEquals(vCBP.brandsName.size(),8);
     }
 
     @When("I click on any brand name")

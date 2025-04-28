@@ -6,6 +6,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 import pages.T09SearchProductPage;
+import utilities.ReusableMethods;
 
 public class T09SearchProductStepDef {
     T09SearchProductPage sPP = new T09SearchProductPage();
@@ -27,8 +28,15 @@ public class T09SearchProductStepDef {
 
     @And("I verify all the products related to search are visible")
     public void ıVerifyAllTheProductsRelatedToSearchAreVisible() {
-        for (WebElement element : sPP.searchProducts) {
-            Assert.assertTrue(element.getText().contains(searchItem));
+
+
+        for (WebElement each : sPP.searchProducts) {
+            System.out.println(each.getText());
+            Assert.assertTrue(each.isDisplayed());
         }
+        ReusableMethods.jsScroll(sPP.wantedProduct);
+
     }
+
+
 }

@@ -18,4 +18,6 @@ public class T09SearchProductPage extends BasePage {
 
     @FindBy(xpath = " //h2[@class='title text-center']")
     public WebElement searchProductsVerifyText;
+    @FindBy(xpath = "//*[@class='features_items']")
+    public WebElement wantedProduct;
 }

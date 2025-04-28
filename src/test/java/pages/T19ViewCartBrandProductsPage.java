@@ -2,8 +2,12 @@ package pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import java.util.List;
 
 public class T19ViewCartBrandProductsPage extends BasePage {
+
+    @FindBy(xpath = "//div[@class='brands-name']/ul/li")
+    public List<WebElement> brandsName;
 
     @FindBy(xpath = " //h2[normalize-space()='Brands']")
     public WebElement brandsProductsVerify;
