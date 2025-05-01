@@ -37,7 +37,7 @@ public class T18ViewCategoryProductsStepDef {
         ReusableMethods.clickWithJS(vCP.menCategory);
         vCP.menCategory.click();
         ReusableMethods.clickWithJS(vCP.jeansButton);
-        vCP.jeansButton.click();
+       // vCP.jeansButton.click();
     }
 
     @Then("I verify that user is navigated to that category page")

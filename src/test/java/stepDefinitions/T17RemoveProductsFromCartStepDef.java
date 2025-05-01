@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -10,8 +11,10 @@ public class T17RemoveProductsFromCartStepDef {
     T17RemoveProductsFromCartPage rPFC = new T17RemoveProductsFromCartPage();
     @When("I click X button corresponding to a particular product")
     public void ıClickXButtonCorrespondingToAParticularProduct() {
-        ReusableMethods.jsScrollClick(rPFC.xButton);
-
+        // ReusableMethods.clickWithJS(rPFC.xButton);
+       // ReusableMethods.jsScrollClick(rPFC.xButton);
+        Assert.assertTrue(rPFC.xButton.isEnabled());
+        rPFC.xButton.click();
     }
 
 

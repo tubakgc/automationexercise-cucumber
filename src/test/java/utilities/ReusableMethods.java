@@ -8,6 +8,9 @@ import org.openqa.selenium.support.ui.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -196,7 +199,15 @@ public class ReusableMethods {
         FileUtils.copyFile(source, finalDestination);
         return  wElementSS;
     }
-
+    public static String selectCountryAndGetName(WebElement element) {
+        Select countrySelect = new Select(element);
+        List<WebElement> options = countrySelect.getOptions();
+        int randomIndex = random.nextInt(options.size());
+        WebElement randomOption = options.get(randomIndex);
+        String selectedCountry = randomOption.getText();
+        countrySelect.selectByVisibleText(selectedCountry);
+        return selectedCountry;
+    }
     //====== js ======//
     public static void jsclick(WebElement webElement){
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
@@ -349,5 +360,23 @@ public class ReusableMethods {
         int randomIndex = random.nextInt(options.size());
         WebElement randomOption = options.get(randomIndex);
         countrySelect.selectByVisibleText(randomOption.getText());
+    }
+    public static void deleteIndexTxtFiles(String nameFile,String typeFile) {
+        try {
+            Path downloadsDir = Paths.get(System.getProperty("user.home"), "Downloads");
+            Files.walk(downloadsDir, 1)
+                    .filter(Files::isRegularFile)
+                    .filter(file -> {
+                        String fileName = file.getFileName().toString().toLowerCase();
+                        return fileName.contains(nameFile) && fileName.endsWith("."+typeFile);
+                    })
+                    .forEach(file -> {
+                        try {
+                            Files.delete(file);
+                        } catch (IOException e) {
+                        }
+                    });
+        } catch (IOException e) {
+        }
     }
 }

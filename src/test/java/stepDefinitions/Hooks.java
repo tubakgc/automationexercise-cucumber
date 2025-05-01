@@ -1,6 +1,7 @@
 package stepDefinitions;
 
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 import pages.T01RegisterUserPage;
 import utilities.ConfigReader;
 import utilities.Driver;
@@ -28,6 +29,8 @@ public class Hooks {
     static String state;
     static String city;
     static String zipcode;
+    static String country;
+    static String title;
 
 
 
@@ -52,7 +55,9 @@ public class Hooks {
         rUP.emailText.sendKeys(email);
         rUP.signUpButton.click();
         Assert.assertEquals(rUP.signUpVerifyText.getText(),"ENTER ACCOUNT INFORMATION");
-        ReusableMethods.titleSelected(rUP.titleRadioButton).click();
+        WebElement elementTitle= ReusableMethods.randomSelected(rUP.titleRadioButton);
+        elementTitle.click();
+        title=elementTitle.getText();
         rUP.accountPasswordText.sendKeys(password);
         ReusableMethods.selectBirthDate(rUP.selectDaysDrop,rUP.selectMonthsDrop,rUP.selectYearsDrop);
         ReusableMethods.jsScroll(rUP.companyNameText);
@@ -68,7 +73,9 @@ public class Hooks {
         rUP.addressText.sendKeys(address1);
         address2=getFaker().address().streetAddress();
         rUP.address2Text.sendKeys(address2);
-        ReusableMethods.selectCountry(rUP.countryDrop);
+        selectCountryAndGetName(rUP.countryDrop);
+        country= selectCountryAndGetName(rUP.countryDrop);
+
         city=getFaker().address().city();
         rUP.cityText.sendKeys(city);
         state=getFaker().address().state();
